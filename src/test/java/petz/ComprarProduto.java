@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.Home;
 import pages.Lista;
+import pages.ProdutoComprado;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,8 @@ public class ComprarProduto {
     Home home;  // objeto herdando a classe home
     Lista lista; // objeto herdando a classe lista
 
+    ProdutoComprado produtoC;
+
     // antes do teste, inicializar os 2 conteudos acima
     @Before
     public void iniciar(){
@@ -35,6 +38,7 @@ public class ComprarProduto {
 
         home = new Home(driver); // instanciar a classe Home
         lista = new Lista(driver); // instanciar a classe lista
+        produtoC = new ProdutoComprado(driver);
     }
 
     @After // ao finalizar o testes
@@ -68,8 +72,9 @@ public class ComprarProduto {
     }
 
     @Entao("^exibe para o \"([^\"]*)\" o preco de \"([^\"]*)\"$")
-    public void exibe_para_o_o_preco_de(String arg1, String arg2) {
+    public void exibe_para_o_o_preco_de(String tamanhoDesejado, String preco) {
         System.out.println("Passo 5");
+        assertEquals("Tamanho PP", produtoC.validarTituloTamanho());
     }
 
 
